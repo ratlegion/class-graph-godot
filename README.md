@@ -4,3 +4,6 @@ This is my first plugin and it’s probably very broken and spaghetti so be kind
 I guess I just wanted to visualize my code structure easier and I guess it lead to this
 
 YouTube Demo: https://www.youtube.com/watch?v=y5HSoo-S6IA
+
+On AI: This project contains no LLM generated code, although I did use it to help me find the function I wanted to use,
+I did not copy anything it gave me directly into the repo.
