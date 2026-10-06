@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cpbm2o7hcsjap"]
+
+[ext_resource type="Texture2D" uid="uid://c1u4f1227pmkq" path="res://icon.svg" id="1_2dvdv"]
+
+[node name="SubViewport" type="SubViewport" unique_id=561121831]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1172110088]
+texture = ExtResource("1_2dvdv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1733020536]
+offset_right = 547200.0
+offset_bottom = 40.0

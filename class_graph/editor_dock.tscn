@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://be8y27r56h4or"]
+
+[ext_resource type="Script" uid="uid://b5kl3n2vrd5n0" path="res://addons/class_graph/dock.gd" id="1_re2g3"]
+[ext_resource type="PackedScene" uid="uid://cje23s7newo0s" path="res://addons/class_graph/script_item.tscn" id="2_d0b16"]
+[ext_resource type="PackedScene" uid="uid://drtqy5pcyscbf" path="res://addons/class_graph/auto_line.tscn" id="3_qfpt8"]
+[ext_resource type="Script" uid="uid://dc35m2fo5dtjr" path="res://addons/class_graph/camera_control.gd" id="4_re2g3"]
+[ext_resource type="Texture2D" uid="uid://dtu27045oqmqn" path="res://addons/class_graph/grid.png" id="5_d0b16"]
+[ext_resource type="Texture2D" uid="uid://c1u4f1227pmkq" path="res://icon.svg" id="6_qfpt8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cqwe8"]
+font_color = Color(1, 0.21972895, 0.20565626, 1)
+
+[node name="Dock" type="EditorDock" unique_id=358800685 node_paths=PackedStringArray("viewport", "items", "lines")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+title = "Class graph"
+default_slot = 5
+script = ExtResource("1_re2g3")
+viewport = NodePath("Vertical/ContentAlign/ViewportControl")
+items = NodePath("Vertical/ContentAlign/ViewportControl/CameraControl/Items")
+item = ExtResource("2_d0b16")
+lines = NodePath("Vertical/ContentAlign/ViewportControl/CameraControl/Lines")
+line = ExtResource("3_qfpt8")
+
+[node name="Vertical" type="VBoxContainer" parent="." unique_id=433550911]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Vertical" unique_id=1236608900]
+layout_mode = 2
+mouse_filter = 1
+text = "Choose any GDScript to display it visually"
+
+[node name="EditorResourcePicker" type="EditorResourcePicker" parent="Vertical" unique_id=1723974570]
+layout_mode = 2
+base_type = "GDScript"
+
+[node name="MustBe" type="Label" parent="Vertical" unique_id=227898222]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+text = "Please set GDScript"
+label_settings = SubResource("LabelSettings_cqwe8")
+
+[node name="ContentAlign" type="Control" parent="Vertical" unique_id=214793942]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ViewportControl" type="Control" parent="Vertical/ContentAlign" unique_id=1965325575 node_paths=PackedStringArray("camera")]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 1
+script = ExtResource("4_re2g3")
+camera = NodePath("CameraControl")
+
+[node name="ColorRect" type="ColorRect" parent="Vertical/ContentAlign/ViewportControl" unique_id=1954158534]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10320.0
+offset_top = -10062.0
+offset_right = 9680.0
+offset_bottom = 9938.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.22, 0.22, 0.22, 1)
+
+[node name="CameraControl" type="Control" parent="Vertical/ContentAlign/ViewportControl" unique_id=1994321316]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="Vertical/ContentAlign/ViewportControl/CameraControl" unique_id=318973798]
+layout_mode = 0
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 19000.0
+offset_bottom = 19000.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_d0b16")
+stretch_mode = 1
+
+[node name="Items" type="Control" parent="Vertical/ContentAlign/ViewportControl/CameraControl" unique_id=1392333479]
+anchors_preset = 0
+mouse_filter = 1
+
+[node name="Lines" type="Control" parent="Vertical/ContentAlign/ViewportControl/CameraControl" unique_id=53173685]
+anchors_preset = 0
+mouse_filter = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Vertical/ContentAlign" unique_id=947649257]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 512.0
+grow_horizontal = 2
+mouse_filter = 0
+
+[node name="SubViewport" type="SubViewport" parent="Vertical/ContentAlign/SubViewportContainer" unique_id=561121831]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 0
+
+[node name="TestPos" type="Control" parent="." unique_id=1016680995]
+visible = false
+layout_mode = 2
+
+[node name="Control" type="Control" parent="TestPos" unique_id=1687073676]
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="TestPos/Control" unique_id=751811956]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.075, 0.075)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_qfpt8")
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="resource_changed" from="Vertical/EditorResourcePicker" to="." method="_on_editor_resource_picker_resource_changed"]

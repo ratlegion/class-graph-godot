@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://drtqy5pcyscbf"]
+
+[ext_resource type="Script" uid="uid://byb0e211b1h0n" path="res://addons/class_graph/auto_line.gd" id="1_6p6yk"]
+
+[sub_resource type="Curve" id="Curve_8cord"]
+_data = [Vector2(0, 0.50205755), 0.0, 0.49794245, 0, 1, Vector2(1, 1), 0.49794245, 0.0, 1, 0]
+point_count = 2
+
+[node name="AutoLine" type="Line2D" unique_id=1420423543]
+width = 2.5
+width_curve = SubResource("Curve_8cord")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("1_6p6yk")

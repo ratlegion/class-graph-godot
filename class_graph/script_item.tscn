@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://cje23s7newo0s"]
+
+[ext_resource type="Script" uid="uid://c3rqwmug0i5rv" path="res://addons/class_graph/script_item.gd" id="1_soqms"]
+[ext_resource type="Script" uid="uid://ckgwrgvb20bs" path="res://addons/class_graph/connector.gd" id="2_kwk42"]
+
+[sub_resource type="Animation" id="Animation_kwk42"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mxn31"]
+resource_name = "click"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.19999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fgxfp"]
+_data = {
+&"RESET": SubResource("Animation_kwk42"),
+&"click": SubResource("Animation_mxn31")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu3ll"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.198, 0.33869997, 0.6, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kwk42"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="FontVariation" id="FontVariation_878bc"]
+variation_embolden = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qk1vj"]
+font = SubResource("FontVariation_878bc")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_re2g3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0b16"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfpt8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iklaj"]
+
+[node name="Control" type="Control" unique_id=1711311969 node_paths=PackedStringArray("name_tag", "line_in", "line_out", "icon", "anim_player")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+script = ExtResource("1_soqms")
+name_tag = NodePath("PanelContainer/Name")
+line_in = NodePath("LineIn")
+line_out = NodePath("LineOut")
+icon = NodePath("PanelContainer/Control/Icon")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=862346421]
+libraries/ = SubResource("AnimationLibrary_fgxfp")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=774987583]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 35.0
+pivot_offset = Vector2(100, 17)
+offset_transform_enabled = true
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_vu3ll")
+
+[node name="Control" type="Control" parent="PanelContainer" unique_id=1479441534]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/Control" unique_id=1808836439]
+custom_maximum_size = Vector2(10, 10)
+layout_mode = 0
+offset_left = -5.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = 15.0
+texture = SubResource("CompressedTexture2D_kwk42")
+
+[node name="Name" type="Label" parent="PanelContainer" unique_id=1820344774]
+layout_mode = 2
+mouse_filter = 1
+text = "SCRIPT"
+label_settings = SubResource("LabelSettings_qk1vj")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer" unique_id=20483725]
+visible = false
+layout_mode = 2
+
+[node name="LineIn" type="Control" parent="." unique_id=159604142]
+visible = false
+anchors_preset = 0
+offset_left = 100.0
+offset_right = 100.0
+mouse_filter = 1
+script = ExtResource("2_kwk42")
+
+[node name="LineOut" type="Control" parent="." unique_id=1185564988]
+visible = false
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 35.0
+offset_right = 100.0
+offset_bottom = 35.0
+mouse_filter = 1
+script = ExtResource("2_kwk42")
+
+[node name="Button" type="Button" parent="." unique_id=805256172]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 35.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_re2g3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d0b16")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qfpt8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iklaj")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
